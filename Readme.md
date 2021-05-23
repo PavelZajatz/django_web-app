@@ -1,15 +1,21 @@
-# REST API With Flask & SQL Alchemy(SQLite)
+# WEB-APP with Django
 
-> Course API using Python Flask, SQL Alchemy and Marshmallow
+> Crypto blog using django and sqlite3
 
 ## Quick Start
 
 ``` bash
 
 # Install dependencies:
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 
-# Create DB
+# To create DataBase go to the folder where is located file 
+# manage.py and run next command:
+$ python3 manage.py migrate
+
+# To create SuperUser go to the folder where is located file 
+# manage.py and run next command and follow instructions:
+$ python3 manage.py createsuperuser
 
 # To Run Server go to the folder where is located file 
 # manage.py and run next command:
