@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <script type="text/javascript">
+    var datefield=document.createElement("input")
+    datefield.setAttribute("type", "date")
+    if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+        document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
+        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
+        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+    }
+    </script>
+
+    <script>
+        if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+            jQuery(function($){ //on document.ready
+                $('#start_date').datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+                $('#end_date').datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+            })
+        }
+    </script>
+</head>
+<body>
+    <aside>
+        <img src="{% static 'main/img/logo.png' %}" alt="logo">
+        <span class="logo">CryptoBlog</span>
+        <h3>Навигация</h3>
+        <ul>
+            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Главная </li></a>
+            <a href="{% url 'news_home' %}"><li><i class="fas fa-rss"></i> Новости </li></a>
+            <a href="{% url 'about' %}"><li><i class="fas fa-info-circle"></i> Про нас </li></a>
+            <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить запись </button></li></a>
+        </ul>
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
