@@ -8,4 +8,4 @@ __pycache__
 venv
 
 # Db
-db.sqlite
+db.sqlite3
